@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  django:
+    build: ./path_to_django_project
+    volumes:
+      - ./path_to_django_project:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1  # Establecer variables de entorno según necesites
+
+  react:
+    build: ./path_to_react_project
+    volumes:
+      - ./path_to_react_project:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+
